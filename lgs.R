@@ -1,3 +1,4 @@
+
 createNames <- function(x, column){
 	labels = sort(unique(x[,column]))
 	len = length(labels)
@@ -7,11 +8,15 @@ createNames <- function(x, column){
 
 setupGSMatrix <- function(rowNames, colNames){
 	x = matrix(0, length(rowNames), length(colNames))
-	rownames(y) = rowNames
-	colnames(y) = colNames
+	rownames(x) = rowNames
+	colnames(x) = colNames
 	return(x)
 }
 
+## January 2009 Inferelator
+## Bonneau lab - Aviv Madar
+## NYU - Center for Genomics and Systems Biology
+## Modified by - Yeison Rodriguez
 
 load_gold_standard <- function( file, r_names=NULL, c_names=NULL ) {
 	x = as.matrix(read.table(file))
@@ -32,5 +37,16 @@ load_gold_standard <- function( file, r_names=NULL, c_names=NULL ) {
 		}
 		return(y)	
 	} 
+	return(x)
+}
+
+# Temporary quick fix for matrices with incorrect gene labels
+fixGeneLabels <- function(x){
+	rLength = length(rownames(x))
+	cLength = length(colnames(x))
+	rLabels = paste("G", 1:rLength, sep="")	
+	cLabels = paste("G", 1:cLength, sep="")	
+	rownames(x) <- rLabels
+	colnames(x) <- cLabels
 	return(x)
 }
