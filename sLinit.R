@@ -7,9 +7,13 @@ xran = function(x){
 	return(xran)
 }
 bmat = function(x){
-	bmat = matrix(rnorm(x^2, 0, .25), nc=x)
+	bmat = matrix(rnorm(x^2, 0, 0.005), nc=x)
 	return(bmat)
 }
+
+source("/Users/yeison/development/LDE/solveLDE.R")
+source("/Users/yeison/development/LDE/lgs.R")
+source("/Users/yeison/development/LDE/applyDegradation.R")
 
 xr = xran(10)
 bm = bmat(10)
