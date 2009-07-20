@@ -7,7 +7,7 @@ saveSolution <- function(xinit, bm, setNumber){
 	
 	solutionList
 		
-	save(solutionList, file=paste("synth", setNumber, "Solution", "Size", size, ".RData", sep=""))
+	save(solutionList, file=paste("size", size, "Synth", setNumber, "Solution", ".RData", sep=""))
 	
 }
 
@@ -16,8 +16,32 @@ saveSynthData <- function(syntheticDataSet, setNumber){
 	size = length(synth[,1])
 	
 	synth = list(synth)
-	names(synth) = paste("synth", setNumber, "size", size)
+	names(synth) = paste("Synthetic Network", setNumber, "Size", size)
 	
-	save(synth, file=paste("synth", setNumber, "Data", "Size", size, ".RData", sep=""))
+	labels(synth) 
+	
+	save(synth, file=paste("size", size, "Synth", setNumber, "Data", ".RData", sep=""))
 		
+}
+
+openSynthData <- function(file){
+	load(file)
+	print(labels(synth))
+	return(synth[[1]])
+}
+
+openSolution <- function(file){
+	load(file)
+	print(labels(solutionList))
+	return(solutionList)
+}
+
+# The function probeData prints information about the contents of a data set containing
+# a regulatory network and  its initial starting conditions, or a data set of synthetic 
+# gene expression values.
+probeData <- function(file){
+	load(file)
+# WARNING: BUGGY function
+	tryCatch(labels(synth), warning = function(e) labels(solutionList))
+	# try synthetic data set, if not a synthetic data set try a solutionlist.
 }

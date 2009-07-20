@@ -11,9 +11,10 @@ bmat = function(x){
 	return(bmat)
 }
 
-source("./solveLDE.R")
-source("./lgs.R")
-source("./applyDegradation.R")
+source("LDE/solveLDE.R")
+source("LDE/lgs.R")
+source("LDE/applyDegradation.R")
+source("LDE/saveSynthetic.R")
 
 xr = xran(10)
 bm = bmat(10)
