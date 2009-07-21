@@ -1,8 +1,0 @@
-ls()
-q()
-ls()
-getwd()
-list.files()
-setwd("R")
-list.files()
-q()
