@@ -32,7 +32,6 @@ openSynthData <- function(file){
 
 openSolution <- function(file){
 	load(file)
-	print(labels(solutionList))
 	return(solutionList)
 }
 
