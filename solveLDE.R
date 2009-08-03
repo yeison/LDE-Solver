@@ -1,5 +1,3 @@
-# To set up random test variables, run the sLinit.R script
-
 solveLDE = function(x, b, dt, intervals, noise){
 	time = dt*intervals
 	T = seq(0, time, by=dt)
