@@ -19,21 +19,23 @@ runSim <- function(topologyFile, ratiosFile, setNumber){
 	maxInitial = max(xinit)
 	
 #	browser()
-	syntheticData = solveLDE(xinit, syntheticNet, 5, 1440, 0.001)
+	syntheticData = solveLDE(xinit, syntheticNet, 5, 1440, 0.01)
 #	browser()
-	
-	while(max(syntheticData) > 2*maxInitial){
-		laregRows = NULL
-		for(i in seq_len(dim(syntheticData)[1])){
-			if(max(syntheticData[i,]) > 2*maxInitial)
-				largeRows = append(laregRows, i)
-		}
-	
-		syntheticNet[ , laregRows] = syntheticNet[ , laregRows]/2
-		#	browser()
-		syntheticData = solveLDE(xinit, syntheticNet, 5, 1440, 0.001)
-	}
+	extract = extractTraj(syntheticData, 21)
 
+	
+#	while(max(syntheticData) > 2*maxInitial){
+#		laregRows = NULL
+#		for(i in seq_len(dim(syntheticData)[1])){
+#			if(max(syntheticData[i,]) > 2*maxInitial)
+#				largeRows = append(laregRows, i)
+#		}
+#	
+#		syntheticNet[ , laregRows] = syntheticNet[ , laregRows]/2
+#		#	browser()
+#		syntheticData = solveLDE(xinit, syntheticNet, 5, 1440, 0.001)
+#	}
+	saveExtract(extract, setNumber)
 	saveSolution(xinit, syntheticNet, setNumber)
 	saveSynthData(syntheticData, setNumber)
 	

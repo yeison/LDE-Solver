@@ -15,6 +15,8 @@ source("LDE/solveLDE.R")
 source("LDE/lgs.R")
 source("LDE/applyDegradation.R")
 source("LDE/saveSynthetic.R")
+source("LDE/runSim.R")
+source("LDE/extractTraj.R")
 
 xr = xran(10)
 bm = bmat(10)

@@ -44,3 +44,9 @@ probeData <- function(file){
 	tryCatch(labels(synth), warning = function(e) labels(solutionList))
 	# try synthetic data set, if not a synthetic data set try a solutionlist.
 }
+
+saveExtract <- function(extract, setNumber){
+	size = length(extract[,1])
+	trajectory = extract
+	save(trajectory, file=paste("size", size, "Traj", setNumber, ".RData", sep=""))	
+}
