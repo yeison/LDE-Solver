@@ -1,4 +1,4 @@
-extractTraj <- function(synth, npoints) {
+extractGNW <- function(synth, npoints) {
 	rows = dim(synth)[1]
 	cols = dim(synth)[2]
 	dt = rows/npoints	
